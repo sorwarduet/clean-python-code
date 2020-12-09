@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
+<style>
+    form{margin: 100px auto;}
+</style>
+
+<script>
+    $(document).ready(function(){
+        var minDate = new Date()
+
+        $("#depart").datepicker({
+            showAnim: 'drop',
+            numberofMonth: 1,
+            dateFormat: 'dd/mm/yy',
+            minDate: 0,
+            maxDate: 5,
+            onClose: function(selectDate){
+                $('#return').datepicker('option', 'minDate', selectDate);
+            }
+
+        });
+        
+        $("#return").datepicker({
+            showAnim: 'drop',
+            numberofMonth: 1,
+            dateFormat: 'dd/mm/yy',
+            minDate: minDate,
+            onClose: function(selectDate){
+                $('#depart').datepicker('option', 'minDate', selectDate);
+            }
+
+        });
+    });
+</script>
+
+</head>
+<body>
+
+    <form action="" method="post">
+        <input type="text" id="Origin" placeholder="Origin">
+        <input type="text" id="destinaion" placeholder="Destinaion">
+        <input type="text" id="depart" placeholder="Depart date">
+        <input type="text" id="return" placeholder="Return date">
+        
+        <select name="seat" id="seat">
+            <option value="1">Seat 1</option>
+            <option value="2">Seat 2</option>
+            <option value="3">Seat 3</option>
+            <option value="4">Seat 4</option>
+        </select>
+
+        <input type="submit" value="Search">
+    </form>
+    
+</body>
+</html>
