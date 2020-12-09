@@ -18,14 +18,9 @@
 
         $("#depart").datepicker({
             showAnim: 'drop',
-            numberofMonth: 1,
             dateFormat: 'dd/mm/yy',
             minDate: 0,
             maxDate: 5,
-            onClose: function(selectDate){
-                $('#return').datepicker('option', 'minDate', selectDate);
-            }
-
         });
         
         $("#return").datepicker({
